@@ -243,7 +243,7 @@ for country, seed in SEEDS.items():
         })
 
 df = pd.DataFrame(rows)
-out_csv = "gucci_10bags_4countries.csv"
+out_csv = "data/gucci_10bags_4countries.csv"
 df.to_csv(out_csv, index=False)
 
 print("Saved:", out_csv)
@@ -255,5 +255,5 @@ us_pool = build_pool(SEEDS["US"], target=80, max_pages=10)
 
 us_df = pd.DataFrame(us_pool.values())
 us_df[["key", "product_name", "price"]].head(157)
-out_csv = "gucci_157bags.csv"
+out_csv = "data/gucci_157bags.csv"
 us_df.to_csv(out_csv, index=False)
