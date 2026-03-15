@@ -77,7 +77,11 @@ def parse_price(text: str):
         else:
             num = float(num_raw)
     else:
-        num = float(num_raw.replace(",", ""))
+        # Both present: last one is decimal separator (US "1,234.56" vs EU "1.234,56")
+        if num_raw.rfind(",") > num_raw.rfind("."):
+            num = float(num_raw.replace(".", "").replace(",", "."))
+        else:
+            num = float(num_raw.replace(",", ""))
     return cur, num
 
 def product_key(u: str) -> str:
@@ -217,9 +221,7 @@ print("US anchors found:", len(anchors))
 if len(anchors) == 0:
     raise RuntimeError("Still found 0 anchors. Run Cell A and paste the first few /p/ links so we can target the right markup.")
 
-anchor_keys = [a["key"] for a in anchors]
 anchor_keys = SELECTED_KEYS
-
 
 # 2) Match across countries
 rows = []
