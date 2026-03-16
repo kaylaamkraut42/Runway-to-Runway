@@ -25,8 +25,8 @@ for a in soup.select("a[href]"):
         links.append((href, last, a.get_text(" ", strip=True)[:80]))
 
 print("Found links:", len(links))
-for x in links[:10]:
-    print(x)
+#for x in links:
+    #print(x)
 
 
 SELECTED_KEYS = [
@@ -36,6 +36,11 @@ SELECTED_KEYS = [
     "866732FAFV99653", 
     "875018AAGIQ1053", 
     "875018FAFV99653", 
+    "867360FAF059651",
+    "875019AAGIQ1053",
+    "866732AAGIQ1053",
+    "863137FAFV29651"
+    
 ]
 
 
