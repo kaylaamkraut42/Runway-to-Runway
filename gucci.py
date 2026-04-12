@@ -14,6 +14,7 @@ HEADERS = {
 response = requests.get(url, headers=HEADERS, timeout=30).text
 soup = BeautifulSoup(response, "lxml")
 
+print(soup.prettify())
 
 
 links = []
@@ -25,8 +26,8 @@ for a in soup.select("a[href]"):
         links.append((href, last, a.get_text(" ", strip=True)[:80]))
 
 print("Found links:", len(links))
-#for x in links:
-    #print(x)
+for x in links:
+    print(x)
 
 
 SELECTED_KEYS = [
